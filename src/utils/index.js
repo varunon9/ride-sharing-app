@@ -1,5 +1,10 @@
-export const getFormattedDateText = (date) => {
-  const dateObject = new Date(date);
-  const monthName = dateObject.toLocaleString('default', { month: 'short' });
-  return `${dateObject.getDate()} ${monthName} ${dateObject.getFullYear()}`;
+export const debounce = (fn, time) => {
+  let timeout;
+
+  return function() {
+    const functionCall = () => fn.apply(this, arguments);
+
+    clearTimeout(timeout);
+    timeout = setTimeout(functionCall, time);
+  };
 };
